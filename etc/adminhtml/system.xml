@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="hmh_review_auto_approval" translate="label" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Review Auto Approval</label>
+            <tab>hmh</tab>
+            <resource>Magento_Backend::admin</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="rules" translate="label comment" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Rules</label>
+                    <comment><![CDATA[Select validators used to automatically approve reviews.]]></comment>
+                    <source_model>Hmh\ReviewAutoApproval\Model\Config\Source\Rules</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="approve_on" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Rule Match Mode</label>
+                    <comment><![CDATA[Choose whether every selected rule must pass or whether one passing rule is enough to approve the review.]]></comment>
+                    <source_model>Hmh\ReviewAutoApproval\Model\Config\Source\ApproveOn</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="default" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Auto Approval by Rating</label>
+                <comment>Auto approve review based on aggregated rating</comment>
+                <field id="minimum_rating" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Minimum Rating</label>
+                    <comment><![CDATA[Minimum average rating required to automatically approve a review.]]></comment>
+                    <source_model>Hmh\ReviewAutoApproval\Model\Config\Source\MinimumRating</source_model>
+                    <depends>
+                        <field id="general/enable">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

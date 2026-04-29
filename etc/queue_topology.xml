@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework-message-queue:etc/topology.xsd">
+    <exchange name="magento-db" type="topic" connection="db">
+        <binding id="hmhReviewAutoApprovalBinding"
+                 topic="hmh.review.auto.approval"
+                 destinationType="queue"
+                 destination="hmh.review.auto.approval.queue"/>
+    </exchange>
+</config>

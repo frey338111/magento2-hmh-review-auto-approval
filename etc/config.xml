@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/config.xsd">
+    <default>
+        <hmh_review_auto_approval>
+            <general>
+                <enable>0</enable>
+                <rules>minimum_rating</rules>
+                <approve_on>all_rules_passed</approve_on>
+            </general>
+            <default>
+                <minimum_rating>3</minimum_rating>
+            </default>
+        </hmh_review_auto_approval>
+    </default>
+</config>
