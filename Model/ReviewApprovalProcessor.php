@@ -39,7 +39,7 @@ class ReviewApprovalProcessor
         }
 
         $rules = $this->configProvider->getRules($storeId);
-        if (!$this->validatorPool->isValid($review, $rules, $this->configProvider->getApproveOn($storeId))) {
+        if (!$this->validatorPool->isValid($review, $rules)) {
             return;
         }
 
