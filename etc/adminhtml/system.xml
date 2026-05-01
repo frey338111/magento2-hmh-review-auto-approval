@@ -40,6 +40,14 @@
                         <field id="general/enable">1</field>
                     </depends>
                 </field>
+                <field id="average_rating" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Average Rating Difference</label>
+                    <comment><![CDATA[Auto approve when difference between review rating and average rating is not over this value.]]></comment>
+                    <source_model>Hmh\ReviewAutoApproval\Model\Config\Source\MinimumRating</source_model>
+                    <depends>
+                        <field id="general/enable">1</field>
+                    </depends>
+                </field>
             </group>
         </section>
     </system>

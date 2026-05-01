@@ -9,7 +9,7 @@ Magento 2 module for automatically approving product reviews after submission wh
 - Product review submission hook that publishes the review ID after review ratings are aggregated
 - Queue consumer that loads the review and approves it when validation passes
 - Strategy-style validator pool for adding approval rules
-- Default validator for minimum average review rating
+- Default validators for minimum average review rating and product average rating difference
 - Approval mode support:
   - all selected rules must pass
   - any selected rule may pass
@@ -26,6 +26,7 @@ Config paths:
 - `hmh_review_auto_approval/general/rules`
 - `hmh_review_auto_approval/general/approve_on`
 - `hmh_review_auto_approval/default/minimum_rating`
+- `hmh_review_auto_approval/default/average_rating`
 
 Defaults:
 
@@ -33,6 +34,7 @@ Defaults:
 - `general/rules`: `minimum_rating`
 - `general/approve_on`: `all_rules_passed`
 - `default/minimum_rating`: `3`
+- `default/average_rating`: `1`
 
 ## Approval Rules
 
@@ -42,9 +44,10 @@ The available options are generated from validator names registered in:
 
 - `Hmh\ReviewAutoApproval\Model\Validator\ValidatorPool`
 
-The default validator is:
+The default validators are:
 
 - `minimum_rating`: approves reviews whose average rating value is greater than or equal to `default/minimum_rating`
+- `average_rating`: approves reviews whose average rating value is not lower than the product average rating by more than `default/average_rating`
 
 ## Rule Match Mode
 

@@ -16,6 +16,7 @@ class ConfigProvider
     public const XML_PATH_RULES = 'hmh_review_auto_approval/general/rules';
     public const XML_PATH_APPROVE_ON = 'hmh_review_auto_approval/general/approve_on';
     public const XML_PATH_MINIMUM_RATING = 'hmh_review_auto_approval/default/minimum_rating';
+    public const XML_PATH_AVERAGE_RATING = 'hmh_review_auto_approval/default/average_rating';
 
     public function __construct(
         private readonly ScopeConfigInterface $scopeConfig
@@ -35,6 +36,15 @@ class ConfigProvider
     {
         return (int) $this->scopeConfig->getValue(
             self::XML_PATH_MINIMUM_RATING,
+            ScopeInterface::SCOPE_STORE,
+            $storeId
+        );
+    }
+
+    public function getAverageRating(?int $storeId = null): float
+    {
+        return (float) $this->scopeConfig->getValue(
+            self::XML_PATH_AVERAGE_RATING,
             ScopeInterface::SCOPE_STORE,
             $storeId
         );

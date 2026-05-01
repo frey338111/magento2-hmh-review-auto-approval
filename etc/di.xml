@@ -9,7 +9,8 @@
     <type name="Hmh\ReviewAutoApproval\Model\Validator\ValidatorPool">
         <arguments>
             <argument name="validators" xsi:type="array">
-                <item name="minimum_rating" xsi:type="object">Hmh\ReviewAutoApproval\Model\Validator\MinimumRatingValidator</item>
+                <item name="minimum_rating" xsi:type="object">Hmh\ReviewAutoApproval\Model\Validator\Rules\MinimumRatingValidator</item>
+                <item name="average_rating" xsi:type="object">Hmh\ReviewAutoApproval\Model\Validator\Rules\AverageRatingValidator</item>
             </argument>
         </arguments>
     </type>

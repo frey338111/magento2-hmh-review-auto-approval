@@ -10,6 +10,7 @@
             </general>
             <default>
                 <minimum_rating>3</minimum_rating>
+                <average_rating>1</average_rating>
             </default>
         </hmh_review_auto_approval>
     </default>
