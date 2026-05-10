@@ -9,7 +9,7 @@
             <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
                 <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Enable</label>
+                    <label>Enable Auto Approval</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
                 <field id="rules" translate="label comment" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -21,11 +21,31 @@
                     </depends>
                 </field>
                 <field id="approve_on" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Rule Match Mode</label>
+                    <label>Auto Approval Rule Match Mode</label>
                     <comment><![CDATA[Choose whether every selected rule must pass or whether one passing rule is enough to approve the review.]]></comment>
                     <source_model>Hmh\ReviewAutoApproval\Model\Config\Source\ApproveOn</source_model>
                     <depends>
                         <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="enable_auto_rejection" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Auto Rejection</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="reject_on_rules" translate="label comment" type="multiselect" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Reject On</label>
+                    <comment><![CDATA[Select validators used to automatically reject reviews.]]></comment>
+                    <source_model>Hmh\ReviewAutoApproval\Model\Config\Source\Rules</source_model>
+                    <depends>
+                        <field id="enable_auto_rejection">1</field>
+                    </depends>
+                </field>
+                <field id="reject_on" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Auto Rejection Rule Match Mode</label>
+                    <comment><![CDATA[Choose rule for automatic reject the review.]]></comment>
+                    <source_model>Hmh\ReviewAutoApproval\Model\Config\Source\RejectOn</source_model>
+                    <depends>
+                        <field id="enable_auto_rejection">1</field>
                     </depends>
                 </field>
             </group>

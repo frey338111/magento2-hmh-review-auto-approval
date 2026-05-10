@@ -19,7 +19,7 @@ class ApproveOn implements ArrayInterface
             [
                 'value' => ConfigProvider::APPROVE_ON_ANY_RULE_PASSED,
                 'label' => __('Any Rule Passed'),
-            ],
+            ]
         ];
     }
 }

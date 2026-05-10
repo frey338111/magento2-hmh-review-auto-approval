@@ -7,6 +7,9 @@
                 <enable>0</enable>
                 <rules>minimum_rating</rules>
                 <approve_on>all_rules_passed</approve_on>
+                <enable_auto_rejection>0</enable_auto_rejection>
+                <reject_on_rules></reject_on_rules>
+                <reject_on>no_rule_passed</reject_on>
             </general>
             <default>
                 <minimum_rating>3</minimum_rating>

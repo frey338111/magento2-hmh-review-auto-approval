@@ -38,6 +38,26 @@ class ValidatorPool
             ->isValid($review, $validators);
     }
 
+    public function canAutoReject(
+        Review $review,
+        array $validatorNames = []
+    ): bool {
+        if ($validatorNames === []) {
+            return false;
+        }
+
+        $validators = $this->getValidatorsByName($validatorNames);
+        if ($validators === []) {
+            return false;
+        }
+
+        $storeId = $this->getStoreId($review);
+
+        return $this->validationStrategyPool
+            ->get($this->configProvider->getRejectOn($storeId))
+            ->isValid($review, $validators);
+    }
+
     public function getValidatorNames(): array
     {
         return array_keys($this->validators);

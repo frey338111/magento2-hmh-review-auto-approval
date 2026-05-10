@@ -13,6 +13,8 @@ Magento 2 module for automatically approving product reviews after submission wh
 - Approval mode support:
   - all selected rules must pass
   - any selected rule may pass
+  - no selected rule may pass
+- Optional auto rejection when configured rejection rules match
 
 ## Configuration
 
@@ -25,6 +27,9 @@ Config paths:
 - `hmh_review_auto_approval/general/enable`
 - `hmh_review_auto_approval/general/rules`
 - `hmh_review_auto_approval/general/approve_on`
+- `hmh_review_auto_approval/general/enable_auto_rejection`
+- `hmh_review_auto_approval/general/reject_on_rules`
+- `hmh_review_auto_approval/general/reject_on`
 - `hmh_review_auto_approval/default/minimum_rating`
 - `hmh_review_auto_approval/default/average_rating`
 
@@ -33,6 +38,9 @@ Defaults:
 - `general/enable`: `0`
 - `general/rules`: `minimum_rating`
 - `general/approve_on`: `all_rules_passed`
+- `general/enable_auto_rejection`: `0`
+- `general/reject_on_rules`: empty
+- `general/reject_on`: `no_rule_passed`
 - `default/minimum_rating`: `3`
 - `default/average_rating`: `1`
 
@@ -57,6 +65,17 @@ Available values:
 
 - `all_rules_passed`: every selected validator must pass
 - `any_rule_passed`: at least one selected validator must pass
+- `no_rule_passed`: no selected validator may pass
+
+## Auto Rejection
+
+When `general/enable_auto_rejection` is enabled, reviews that fail approval validation can be set to Not Approved.
+
+Configured rejection validators are read from `general/reject_on_rules`. The rejection strategy is read from `general/reject_on`.
+
+Available rejection strategy values:
+
+- `no_rule_passed`: reject when no selected rejection validator passes
 
 ## Queue
 

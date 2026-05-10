@@ -20,6 +20,7 @@
             <argument name="strategies" xsi:type="array">
                 <item name="all_rules_passed" xsi:type="object">Hmh\ReviewAutoApproval\Model\Validator\Strategy\AllRulesPassedStrategy</item>
                 <item name="any_rule_passed" xsi:type="object">Hmh\ReviewAutoApproval\Model\Validator\Strategy\AnyRulePassedStrategy</item>
+                <item name="no_rule_passed" xsi:type="object">Hmh\ReviewAutoApproval\Model\Validator\Strategy\NoRulePassedStrategy</item>
             </argument>
         </arguments>
     </type>

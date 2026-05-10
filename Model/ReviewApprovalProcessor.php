@@ -38,8 +38,11 @@ class ReviewApprovalProcessor
             return;
         }
 
-        $rules = $this->configProvider->getRules($storeId);
-        if (!$this->validatorPool->isValid($review, $rules)) {
+        if (!$this->validatorPool->isValid(
+            $review,
+            $this->configProvider->getRules($storeId)
+        )) {
+            $this->checkAutoRejection($review, $storeId);
             return;
         }
 
@@ -63,5 +66,23 @@ class ReviewApprovalProcessor
         }
 
         return null;
+    }
+
+    private function checkAutoRejection(Review $review, ?int $storeId): void
+    {
+        if (!$this->configProvider->isAutoRejectionEnabled($storeId)) {
+            return;
+        }
+
+        if (!$this->validatorPool->canAutoReject(
+            $review,
+            $this->configProvider->getRejectOnRules($storeId)
+        )) {
+            return;
+        }
+
+        $review->setStatusId(Review::STATUS_NOT_APPROVED);
+        $review->save();
+        $review->aggregate();
     }
 }
