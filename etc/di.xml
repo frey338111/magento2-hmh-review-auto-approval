@@ -24,4 +24,23 @@
             </argument>
         </arguments>
     </type>
+
+    <virtualType name="Hmh\ReviewAutoApproval\Model\Config\Source\ApproveOn"
+                 type="Hmh\ReviewAutoApproval\Model\Config\Source\Strategy">
+        <arguments>
+            <argument name="options" xsi:type="array">
+                <item name="all_rules_passed" xsi:type="string">All Rules Passed</item>
+                <item name="any_rule_passed" xsi:type="string">Any Rule Passed</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Hmh\ReviewAutoApproval\Model\Config\Source\RejectOn"
+                 type="Hmh\ReviewAutoApproval\Model\Config\Source\Strategy">
+        <arguments>
+            <argument name="options" xsi:type="array">
+                <item name="no_rule_passed" xsi:type="string">No Rules Passed</item>
+            </argument>
+        </arguments>
+    </virtualType>
 </config>
